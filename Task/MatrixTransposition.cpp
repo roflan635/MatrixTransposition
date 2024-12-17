@@ -4,6 +4,20 @@
 #include "pch.h"
 #include "Task.h"
 
+int** MatrixTransposition(int**arr, int cols, int rows)
+{
+	if (rows < 1 || cols < 1 || arr == nullptr) return nullptr;  //проверка на пустой указатель и размер матрицы
+	int** res = new int* [cols]; // выделяем память под массив указателей на строки результирующей матрицы
+	for (int i = 0; i < cols; i++)
+		res[i] = new int[rows]; // выделяем память под массив для каждой строки результирующей матрицы
+
+	for (int i = 0; i < cols; i++)
+	{
+		for (int j = 0; j < rows; j++)
+			res[i][j] = arr[j][i];
+	}
+	return res;
+}
 
 /*
 	Напишите функцию, которая транспонирует матрицу целых чисел произвольного размера, помещает результат
